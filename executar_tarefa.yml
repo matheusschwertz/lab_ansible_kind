@@ -1,0 +1,28 @@
+---
+- name: Executar tarefa no nó control-plane
+  hosts: localhost
+  tasks:
+    - name: Atualizar pacotes no nó control-plane
+      docker_container:
+        name: lab-control-plane
+        command: apt update && apt upgrade -y
+      connection: docker
+
+- name: Executar tarefa no nó worker
+  hosts: localhost
+  tasks:
+    - name: Atualizar pacotes no nó worker
+      docker_container:
+        name: lab-worker
+        command: apt update && apt upgrade -y
+      connection: docker
+
+- name: Executar tarefa no nó worker2
+  hosts: localhost
+  tasks:
+    - name: Atualizar pacotes no nó worker2
+      docker_container:
+        name: lab-worker2
+        command: apt update && apt upgrade -y
+      connection: docker
+...
